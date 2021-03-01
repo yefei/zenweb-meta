@@ -28,6 +28,7 @@
   "devDependencies": {
     "@zenweb/core": "^1.0.0",
     "eslint": "^7.16.0",
-    "koa": "^2.13.1"
+    "koa": "^2.13.1",
+    "zenweb": "^1.2.1"
   }
 }

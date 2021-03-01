@@ -1,6 +1,10 @@
 'use strict';
 
-const { version } = require('@zenweb/core/package.json');
+let version = '-';
+try {
+  version = require('zenweb/package.json').version;
+  // eslint-disable-next-line no-empty
+} catch (err) {}
 
 /**
  * 服务器信息
