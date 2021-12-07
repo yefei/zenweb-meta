@@ -1,34 +1,18 @@
-'use strict';
-
-let version = '-';
-try {
-  version = require('zenweb/package.json').version;
-  // eslint-disable-next-line no-empty
-} catch (err) {}
+const START_TIME = Symbol('zenweb-meta#startTime');
 
 /**
- * 服务器信息
- * @param {import('koa').Context} ctx 
- * @param {*} next 
+ * @param {import('@zenweb/core').Core} core
  */
-async function meta(ctx, next) {
-  ctx.startTime = Date.now();
-  ctx.set('X-Powered-By', `zenweb/${version} node/${process.version}`);
-  try {
-    await next();
-  } finally {
-    ctx.set('X-Process-Time', Date.now() - ctx.startTime);
-  }
+export async function setup(core) {
+  const version = await import('zenweb/package.json').then(r => r.version, e => '-');
+  Object.defineProperty(core.koa.context, 'startTime', { get() { return this[START_TIME]; } });
+  core.use(async function meta(ctx, next) {
+    ctx[START_TIME] = Date.now();
+    ctx.set('X-Powered-By', `zenweb/${version} node/${process.version}`);
+    try {
+      await next();
+    } finally {
+      ctx.set('X-Process-Time', Date.now() - ctx[START_TIME]);
+    }
+  });
 }
-
-/**
- * @param {import('@zenweb/core').Core} core 
- * @param {*} [options]
- */
-function setup(core, options) {
-  core.koa.use(meta);
-}
-
-module.exports = {
-  setup,
-};

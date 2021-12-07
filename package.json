@@ -1,8 +1,17 @@
 {
   "name": "@zenweb/meta",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Zenweb Meta module",
-  "main": "index.js",
+  "type": "module",
+  "exports": "./index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "typings": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +35,7 @@
     "url": "https://github.com/yefei/zenweb-meta/issues"
   },
   "devDependencies": {
-    "@zenweb/core": "^1.0.0",
+    "@zenweb/core": "^2.0.1",
     "eslint": "^7.16.0",
     "koa": "^2.13.1",
     "zenweb": "^1.2.1"
