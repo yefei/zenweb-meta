@@ -15,7 +15,7 @@ export async function setup(core: Core, opt?: MetaOption) {
   }, opt);
   const version: string = require('zenweb/package.json').version;
   Object.defineProperty(core.koa.context, 'startTime', { get() { return this[START_TIME]; } });
-  core.use(async function meta(ctx: Koa.BaseContext, next: Koa.Next) {
+  core.use(async function meta(ctx: Koa.Context, next: Koa.Next) {
     ctx[START_TIME] = Date.now();
     if (opt.showVersion) {
       ctx.set('X-Powered-By', `zenweb/${version || '-'} node/${process.version}`);
@@ -31,7 +31,7 @@ export async function setup(core: Core, opt?: MetaOption) {
 }
 
 declare module 'koa' {
-  interface BaseContext {
+  interface DefaultContext {
     [START_TIME]: number;
   
     /**
