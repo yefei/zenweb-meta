@@ -1,5 +1,5 @@
-import { Core } from '@zenweb/core';
-import { setup } from './index.js';
+const { Core } = require('@zenweb/core');
+const { setup } = require('./dist/index');
 
 const app = new Core();
 app.setup(setup);
