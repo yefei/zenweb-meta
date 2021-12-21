@@ -13,7 +13,10 @@ export async function setup(core: Core, opt?: MetaOption) {
     showVersion: true,
     showProcessTime: true,
   }, opt);
-  const version: string = require('zenweb/package.json').version;
+  if (opt.showVersion) {
+    var version: string = require('zenweb/package.json').version;
+    console.log('zenweb version:', version);
+  }
   Object.defineProperty(core.koa.context, 'startTime', { get() { return this[START_TIME]; } });
   core.use(async function meta(ctx: Koa.Context, next: Koa.Next) {
     ctx[START_TIME] = Date.now();
