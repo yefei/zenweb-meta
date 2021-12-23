@@ -31,10 +31,7 @@
     "url": "https://github.com/yefei/zenweb-meta/issues"
   },
   "devDependencies": {
-    "@types/koa": "^2.13.4",
-    "@zenweb/core": "^2.1.1",
-    "eslint": "^7.16.0",
-    "koa": "^2.13.1",
+    "@zenweb/core": "^2.3.0",
     "zenweb": "^2.1.1"
   }
 }
