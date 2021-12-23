@@ -1,6 +1,6 @@
 {
   "name": "@zenweb/meta",
-  "version": "2.1.2",
+  "version": "2.3.0",
   "description": "Zenweb Meta module",
   "exports": "./dist/index.js",
   "typings": "./dist/index.d.ts",
